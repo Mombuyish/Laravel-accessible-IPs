@@ -51,6 +51,14 @@ You can do configrate on config `access-ip.php`
     ],
 ```
 
+If you have proxies server on front, you should be place proxies:
+
+``` php
+'proxies' => [
+        env('PROXY_SERVER_IP'),
+    ],
+```
+
 Finally, you can use on routing middleware, for example:
 
 ``` php
@@ -68,5 +76,9 @@ Route::group(['middleware' => ['access-ip']], function() {
     });
 });
 ```
+
+# Exception
+When you denied by middleware, you will get 403 Forbidden.
+You can use `app/Exceptions/Handler.php` to change exception do something.
 
 it will get same things.

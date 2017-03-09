@@ -19,10 +19,11 @@ class AccessibleIPAddress
             return in_array($ip, $lists);
         };
 
-        /**
-         * setTrustedProxies
-         */
-        $request->setTrustedProxies(config('access-ip.allowed'));
+        $proxies = config('access-ip.proxies');
+
+        if (! empty($proxies)) {
+            $request->setTrustedProxies($proxies);
+        }
 
         $whitelists = $in($request->ip(), config('access-ip.allowed'));
 
