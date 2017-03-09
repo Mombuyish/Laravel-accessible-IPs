@@ -19,18 +19,15 @@ class AccessibleIPAddress
             return in_array($ip, $lists);
         };
 
-        $whilelists = ! $in($request->ip(), config('access-ip.white'));
+        /**
+         * setTrustedProxies
+         */
+        $request->setTrustedProxies(config('access-ip.allowed'));
 
-        $blacklists = $in($request->ip(), config('access-ip.black'));
+        $whitelists = $in($request->ip(), config('access-ip.allowed'));
 
-        $empty_config = empty(config('access-ip.white')) && empty(config('access-ip.black'));
-
-        if ($empty_config) {
-            return $next($request);
-        }
-
-        if ($whilelists OR $blacklists) {
-            abort(403, "Only Accessible for developers from Internal.");
+        if (! $whitelists) {
+            abort(403, "Only Accessible for Allow lists.");
         }
 
         return $next($request);
