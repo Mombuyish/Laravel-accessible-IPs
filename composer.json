@@ -16,5 +16,7 @@
         "psr-4": {
             "Mombuyish\\AccessibleIP\\": "src/"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
