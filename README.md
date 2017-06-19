@@ -1,10 +1,19 @@
-Laravel Accessible IPs
-===
+<p align="center"><img src="http://i.imgur.com/8yhyKNl.png?1"></p>
+
+<p align="center">
+<a href="https://travis-ci.org/Mombuyish/Laravel-accessible-IPs"><img src="https://travis-ci.org/Mombuyish/Laravel-accessible-IPs.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/yish/laravel-accessible-ip"><img src="https://poser.pugx.org/yish/laravel-accessible-ip/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/yish/laravel-accessible-ip"><img src="https://poser.pugx.org/yish/laravel-accessible-ip/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/yish/laravel-accessible-ip"><img src="https://poser.pugx.org/yish/laravel-accessible-ip/license.svg" alt="License"></a>
+<a href="https://packagist.org/packages/yish/laravel-accessible-ip"><img src="https://poser.pugx.org/yish/laravel-accessible-ip/v/unstable.svg" alt="License"></a>
+</p>
+
+# Laravel Accessible IPs
+
+> Accessible IPs for Laravel. Supported allowed ip and proxy server.
 
 Required:
-
 * laravel 5.3 or later.
-* php 7 or later.
 
 # Installation
 
@@ -45,17 +54,24 @@ $ php artisan vendor:publish --provider="Mombuyish\AccessibleIP\AccessibleIPServ
 
 You can do configrate on config `access-ip.php`
 
+🎉🎉**Supported CI/DR !!**🎉🎉
+
+Including `127.0.0.1` inside, so you don't need add it.
 ```php
 'allowed' => [
-        '127.0.0.1'
+        '123.11.22.33',
+        '123.11.0.0/32'
     ],
 ```
 
 If you have proxies server on front, you should be place proxies:
 
+🎉🎉**Supported CI/DR !!**🎉🎉
+
 ``` php
 'proxies' => [
         env('PROXY_SERVER_IP'),
+        '123.11.0.0/32'
     ],
 ```
 

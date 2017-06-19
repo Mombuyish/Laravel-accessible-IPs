@@ -3,6 +3,7 @@
 namespace Mombuyish\AccessibleIP\Middleware;
 
 use Closure;
+use Symfony\Component\HttpFoundation\IpUtils;
 
 class AccessibleIPAddress
 {
@@ -15,19 +16,15 @@ class AccessibleIPAddress
      */
     public function handle($request, Closure $next)
     {
-        $in = function($ip, $lists) {
-            return in_array($ip, $lists);
-        };
-
         $proxies = config('access-ip.proxies');
 
         if (! empty($proxies)) {
             $request->setTrustedProxies($proxies);
         }
 
-        $whitelists = $in($request->ip(), config('access-ip.allowed'));
+        $ips = array_merge(['127.0.0.1'], config('access-ip.allowed'));
 
-        if (! $whitelists) {
+        if (! IpUtils::checkIp($request->ip(), $ips)) {
             abort(403, "Only Accessible for Allow lists.");
         }
 

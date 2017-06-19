@@ -19,9 +19,10 @@ return [
     |--------------------------------------------------------------------------
     | You can place 'allow' ips, for default settings, all ips were in blacklists.
     | The mean is all ips were denied.
+    | Supported CI/DR.
     */
 
     'allowed' => [
-        '127.0.0.1'
+        //
     ],
 ];
