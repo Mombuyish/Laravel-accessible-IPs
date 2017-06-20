@@ -4,7 +4,6 @@ namespace Mombuyish\AccessibleIP\Tests;
 
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Mombuyish\AccessibleIP\AccessibleIPServiceProvider;
 use Mockery as m;
 use Mombuyish\AccessibleIP\Middleware\AccessibleIPAddress;
