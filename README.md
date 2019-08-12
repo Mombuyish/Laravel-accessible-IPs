@@ -1,6 +1,10 @@
-<p align="center"><img src="http://i.imgur.com/8yhyKNl.png?1"></p>
+# Laravel Accessible IPs
 
-<p align="center">
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path fill="#f4645f" d="M22 18v-2H8V4h2L7 1 4 4h2v2H2v2h4v8c0 1.1.9 2 2 2h8v2h-2l3 3 3-3h-2v-2h4zM10 8h6v6h2V8c0-1.1-.9-2-2-2h-6v2z"/></svg>
+
+<p>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<a class="github-button" href="https://github.com/Mombuyish/Laravel-accessible-IPs" data-show-count="true" aria-label="Star Mombuyish/Laravel-accessible-IPs on GitHub">Star</a>
 <a href="https://travis-ci.org/Mombuyish/Laravel-accessible-IPs"><img src="https://travis-ci.org/Mombuyish/Laravel-accessible-IPs.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/yish/laravel-accessible-ip"><img src="https://poser.pugx.org/yish/laravel-accessible-ip/d/total.svg" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/yish/laravel-accessible-ip"><img src="https://poser.pugx.org/yish/laravel-accessible-ip/v/stable.svg" alt="Latest Stable Version"></a>
@@ -8,22 +12,19 @@
 <a href="https://packagist.org/packages/yish/laravel-accessible-ip"><img src="https://poser.pugx.org/yish/laravel-accessible-ip/v/unstable.svg" alt="License"></a>
 </p>
 
-# Laravel Accessible IPs
+Accessible IPs for Laravel. Supported allowed ip and proxy server.
 
-> Accessible IPs for Laravel. Supported allowed ip and proxy server.
+## Requirement
+#### laravel 5.1 - 5.4.
 
-Required:
-* laravel 5.3 or later.
+## Installation
 
-# Installation
-
-As others package, use composer install this package. For example:
-
+Install via composer
 ``` bash
 $ composer require yish/laravel-accessible-ip
 ```
 
-Secondly, you need to register service provider in `config/app.php`, also, you can binding `AppServiceProvider` on register.
+You need to register service provider in `config/app.php`, also, you can binding `AppServiceProvider` on register.
 
 **Notice**
 You must register provider after `Illuminate\Http\Request`.
@@ -38,7 +39,7 @@ You must register provider after `Illuminate\Http\Request`.
     ...
 ```
 
-Thirdly, Going to `app/Http/Middleware/Kernel.php`, adding middleware
+Next, navigate to `app/Http/Middleware/Kernel.php`, adding middleware
 
 ``` php
 protected $routeMiddleware = [
@@ -46,15 +47,15 @@ protected $routeMiddleware = [
     ];
 ```
 
-Fourthly, publish config.
+Finally, publish the config.
 
 ``` bash
 $ php artisan vendor:publish --provider="Mombuyish\AccessibleIP\AccessibleIPServiceProvider"
 ```
 
-You can do configrate on config `access-ip.php`
+You can configrate on config `access-ip.php`
 
-🎉🎉**Supported CI/DR !!**🎉🎉
+🎉🎉 **Supported CI/DR !!** 🎉🎉
 
 Including `127.0.0.1` inside, so you don't need add it.
 ```php
@@ -66,7 +67,7 @@ Including `127.0.0.1` inside, so you don't need add it.
 
 If you have proxies server on front, you should be place proxies:
 
-🎉🎉**Supported CI/DR !!**🎉🎉
+🎉🎉 **Supported CI/DR !!** 🎉🎉
 
 ``` php
 'proxies' => [
@@ -75,7 +76,7 @@ If you have proxies server on front, you should be place proxies:
     ],
 ```
 
-Finally, you can use on routing middleware, for example:
+You can use on routing middleware, for example:
 
 ``` php
 Route::get('/', function () {
@@ -94,7 +95,7 @@ Route::group(['middleware' => ['access-ip']], function() {
 ```
 
 # Exception
-When you denied by middleware, you will get 403 Forbidden.
+When you denied by middleware, you will get `403 Forbidden`.
 You can use `app/Exceptions/Handler.php` to change exception do something.
 
-it will get same things.
+It will get same things.
